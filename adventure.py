@@ -50,13 +50,13 @@ class Adventure:
     def battle(self):
         print("Battle with the creature!")
         time.sleep(1)
+        self.print_sword()
         print("You need a weapon to fight.")
         time.sleep(1)
     
         if self.has_sword:
             print("You use your sword to defeat the creature.")
             time.sleep(1)
-            self.print_sword()
             print("You won the battle!")
             self.find_treasure()
             
@@ -79,10 +79,7 @@ class Adventure:
     
     def gain_sword(self):
         self.has_sword = True
-    def print_sword(self):
-        print("       /| ________________")
-        print("O|===|* >________________>")
-        print("      \|")
+    
    
     def check_note(self):
         print("You found a note inside the chest.")
@@ -98,3 +95,9 @@ class Adventure:
             print("You already have the sword.")
         else:
             print("Nothing happens.")
+
+    def print_sword(self):
+        print("       /| ________________")
+        print("O|===|* >________________>")
+        print("      \|")
+  
