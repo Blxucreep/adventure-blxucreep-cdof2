@@ -3,6 +3,8 @@ import time
 class Adventure:
     def __init__(self, player):
         self.player = player
+        self.has_sword = False
+        self.game_over = False
     
     def introduction(self):
         print("Welcome to this dungeon!")
@@ -27,15 +29,21 @@ class Adventure:
             time.sleep(1)
             print("What do you want to do with the key?")
             time.sleep(1)
-            print("1. Use the key to open the door\n2. Keep the key in your pocket")
+            print("1. Use the key to open the door\n2. Keep the key in your pocket\n3. Use the key to unlock a chest")
             action = input("Choose an action: ")
             if action == "1":
                 print("You use the key to open the door and discover a secret room.")
                 self.find_treasure()
-            else:
+            elif action == "2":
                 print("You decide to keep the key in your pocket and leave.")
+            elif action == "3":
+                print("You use the key to unlock a chest and find a note.")
+                self.check_note()
+            else:
+                print("Invalid action. Please choose a correct action.")
         elif decision == "3":
             print("You decide to leave. End of the adventure.")
+            self.end_game()
         else:
             print("Invalid action. Please choose a correct action.")
     
@@ -44,12 +52,14 @@ class Adventure:
         time.sleep(1)
         print("You need a weapon to fight.")
         time.sleep(1)
-        
-        if "sword" in self.player.inventory:
+    
+        if self.has_sword:
             print("You use your sword to defeat the creature.")
             time.sleep(1)
+            self.print_sword()
             print("You won the battle!")
             self.find_treasure()
+            
         else:
             print("You don't have a weapon. The creature attacks, and you lose.")
             self.end_game()
@@ -57,7 +67,34 @@ class Adventure:
     def find_treasure(self):
         print("Congratulations! You have discovered treasure in the secret room.")
         time.sleep(1)
+        if not self.has_sword:
+            print("You also find a sword!")
+            self.gain_sword()
         print("You win the text adventure game. Thanks for playing, " + self.player.name + "!")
+        self.game_over = True
     
     def end_game(self):
         print("End of the adventure. Thanks for playing.")
+        self.game_over = True
+    
+    def gain_sword(self):
+        self.has_sword = True
+    def print_sword(self):
+        print("       /| ________________")
+        print("O|===|* >________________>")
+        print("      \|")
+   
+    def check_note(self):
+        print("You found a note inside the chest.")
+        time.sleep(1)
+        print("It says: 'To obtain the sword, press 5 and then 2.'")
+        time.sleep(1)
+        combination = input("Enter the combination: ")
+        
+        if combination == "5" and not self.has_sword:
+            print("You hear a click and a hidden compartment opens, revealing a sword!")
+            self.gain_sword()
+        elif self.has_sword:
+            print("You already have the sword.")
+        else:
+            print("Nothing happens.")
