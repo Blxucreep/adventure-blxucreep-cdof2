@@ -1,4 +1,5 @@
 # Welcome to the adventure game!
+
 Here is the first practical work in Decentralization Technologies. It is about an amazing adventure, coded in Python.
 
 ## How to play
