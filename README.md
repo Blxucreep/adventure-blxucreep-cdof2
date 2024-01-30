@@ -13,6 +13,11 @@ To play, you need to have Python 3 installed on your computer. Then, you can clo
 
 To run the game, use the following command: `python game.py`.
 
+New Features
+- Added the ability to find a sword in the game.
+- Implemented battles with creatures, allowing the player to use the sword to fight.
+- The sword will appear in the console when the player uses it during a battle.
+
 ## How to contribute
 If you want to contribute to this project, you can fork this repository and then make a pull request. You can also open an issue if you find a bug or if you have an idea to improve the game.
 
