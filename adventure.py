@@ -72,9 +72,9 @@ class Adventure:
             self.gain_sword()
         print("You win the text adventure game. Thanks for playing, " + self.player.name + "!")
         self.game_over = True
-    def print_sword(self):
-        print("       /| ________________")
-        print("O|===|* >________________>")
+   def print_sword(self):
+        print("       /| ___________________________________________________")
+        print("O|===|* >______________________________________________________>")
         print("      \|")
     
     def end_game(self):
