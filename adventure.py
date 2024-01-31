@@ -1,4 +1,5 @@
 import time
+import random
 
 class Adventure:
     def __init__(self, player):
@@ -25,7 +26,22 @@ class Adventure:
             print("Suddenly, a creature appears in front of you!")
             self.battle()
         elif decision == "2":
-            print("You examine the door and find a hidden key.")
+            print("You examine the door and find something.")
+            time.sleep(1)
+            self.random_door_examination()
+        elif decision == "3":
+            print("You decide to leave. End of the adventure.")
+            self.end_game()
+        else:
+            print("Invalid action. Please choose a correct action.")
+    
+    def random_door_examination(self):
+        door_examination_result = random.randint(1, 3)  # Randomly choose a result
+        
+        if door_examination_result == 1:
+            print("You don't find anything of interest.")
+        elif door_examination_result == 2:
+            print("You find a hidden key.")
             time.sleep(1)
             print("What do you want to do with the key?")
             time.sleep(1)
@@ -41,11 +57,12 @@ class Adventure:
                 self.check_note()
             else:
                 print("Invalid action. Please choose a correct action.")
-        elif decision == "3":
-            print("You decide to leave. End of the adventure.")
-            self.end_game()
+        elif door_examination_result == 3:
+            print("You find nothing, but notice a strange symbol on the door.")
+            time.sleep(1)
+            print("It might be important later.")
         else:
-            print("Invalid action. Please choose a correct action.")
+            print("Invalid result. Something went wrong.")
     
     def battle(self):
         print("Battle with the creature!")
@@ -72,10 +89,6 @@ class Adventure:
             self.gain_sword()
         print("You win the text adventure game. Thanks for playing, " + self.player.name + "!")
         self.game_over = True
-    def print_sword(self):
-        print("       /| ________________")
-        print("O|===|* >________________>")
-        print("      \|")
     
     def end_game(self):
         print("End of the adventure. Thanks for playing.")
@@ -84,6 +97,10 @@ class Adventure:
     def gain_sword(self):
         self.has_sword = True
     
+    def print_sword(self):
+        print("       /| ________________")
+        print("O|===|* >________________>")
+        print("      \|")
    
     def check_note(self):
         print("You found a note inside the chest.")
